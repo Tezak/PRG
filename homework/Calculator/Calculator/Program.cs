@@ -195,6 +195,8 @@ namespace Calculator
             {
                 Console.CursorVisible = true;
                 string input = Console.ReadLine();
+                string[] inputField = input.Split('=');
+                if(inputField.Length == 2) input = inputField[1];
                 Console.CursorVisible = false;
                 bool isNumber = float.TryParse(input, out number);
                 bool isNotZero = !(operation == 3 && number == 0f);
@@ -222,7 +224,7 @@ namespace Calculator
                 return true; 
             } 
             else { 
-                MessageBox.Show(message, "Nevalidní vstup");
+                MessageBox.Show("\n   (@_\n\\\\\\_\\\n<____\n)" + message, "Nevalidní vstup");
                 return false; 
             }
         }
