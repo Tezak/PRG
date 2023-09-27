@@ -12,38 +12,94 @@ namespace Calculator
     {
         static void Main(string[] args)
         {
-            string[] operations = { /*0*/"sčítání", /*1*/"odčítání", /*2*/"násobení", /*3*/"dělení", /*4*/"mocnění", /*5*/"převod na jinou sooustavu" };
+            string[] operations = { 
+                /*0*/"sčítání", 
+                /*1*/"odčítání", 
+                /*2*/"násobení", 
+                /*3*/"dělení", 
+                /*4*/"mocnění", 
+                /*5*/"převod na jinou soustavu" };
             float a, b;
             int operation;
+            string result;
+            Boolean again;
 
-            operation = choose(operations); //vybírá počerní operaci
+            clean(true);
 
-            getNumbers(out a,out b, operation); //přečte čísla
+            do
+            {
+                chooseOperation(out operation, operations);
 
-            string result = countIt(a, b, operation); //vypočítá
+                Boolean notOK = false;
+                do
+                {
+                    readNumbers(out a, out b, operation);
 
-            writeResault(result, operation);
+                    countIt(a, b, operation, out result);
 
-            Console.ReadKey(); 
+                    if (result == "∞" || result == "-∞")
+                    {
+                        notOK = true;
+                        MessageBox.Show("Promiň, toto nedokážu vypočítat :( \n Výsledek je mimo mé limity. Zkus to prosím znovu s jinými čísly.");
+                    }
+
+
+                } while (notOK);
+                
+                writeResault(result, operation);
+
+                askIfAgain(out again);
+
+                clean();
+
+            } while (again);
+            
         }
+
+        private static void clean(){ clean(false); }
+
+        private static void clean(Boolean first)
+        {
+            Console.Clear();
+            Console.WriteLine("\n   MOJE EPICKÁ KALKULAČKA" + 
+                (first? " (v menu se pohybuj pomocí šipek a potvrď klávesou ENTER)": " ") 
+                + "\n");
+        }
+
+        private static void askIfAgain(out Boolean again)
+        {
+            string[] options = {
+                "Chci počítat dál",
+                "Ukončit program"};
+            again = choose(options, Console.CursorTop + 1) == 0;
+        }
+
+        private static void chooseOperation(out int operation, string[] operations) { Console.WriteLine(); operation = choose(operations, Console.CursorTop - 1); }
 
         private static void writeResault(string result, int operation)
         {
-            string[] text = { "součet: ", "rozdíl: ", "součin: ", "podíl: ", "mocnina: ", "převedené číslo: " };
-            Console.WriteLine(new string('_', (text[operation] + result.ToString()).Length + 2));
-            Console.WriteLine(text[operation] + result);
+            string[] text = { 
+                "součet: ", 
+                "rozdíl: ", 
+                "součin: ", 
+                "podíl: ", 
+                "mocnina: ", 
+                "převedené číslo: " };
+            string textO = text[operation];
+            Console.WriteLine("   " + new string('_', (textO + result.ToString()).Length + 2));
+            Console.WriteLine("   " + textO + result);
         }
 
-        private static string countIt(float a, float b, int operation)
+        private static void countIt(float a, float b, int operation, out string result)
         {
-            double result =
+            float fResult =
                 operation == 0 ? a + b :
                 operation == 1 ? a - b :
                 operation == 2 ? a * b :
                 operation == 3 ? a / b :
-                operation == 4 ? Math.Pow(a, b): 0;
+                operation == 4 ? Convert.ToSingle(Math.Pow(a, b)) : 0;
 
-            return operation == 5? baseConvertion(a, b): result.ToString();
+            result = operation == 5? baseConvertion(a, b): fResult.ToString();
         }
 
         private static string baseConvertion(float a, float b)
@@ -63,57 +119,65 @@ namespace Calculator
             return Convert.ToString(result);
         }
 
-        static void getNumbers(out float a, out float b, int operation)
+       
+        static void readNumbers(out float a, out float b, int operation)
         {
-            string[] textA = {"sčítanec: ","menšenec: ","činitel: ","dělenec: ","základ: ","číslo: "};
-            a = operation == 5? numberCheck(textA[operation], 2): numberCheck(textA[operation]);
-            string[] textB = { "sčítanec: ", "menšitel: ", "činitel: ", "dělitel: ", "exponent: ", "soustava: "};
-            b = operation == 5 ? numberCheck(textB[operation], 3) : operation == 3? numberCheck(textB[operation], 1) : numberCheck(textB[operation]);
+            clean();
+            string[] textA = { "sčítanec: ", "menšenec: ", "činitel: ", "dělenec: ", "základ: ", "číslo: " };
+            a = numberCheck("   " + textA[operation], operation, 'a');
+            string[] textB = { "sčítanec: ", "menšitel: ", "činitel: ", "dělitel: ", "exponent: ", "soustava: " };
+            b = numberCheck("   " + textB[operation], operation, 'b');
         }
 
-        private static int choose(string[] option)
+        private static int choose(string[] options, int cursorPosition)
         {
-            Console.Clear();
-            for(int i = 0; i < option.Length; i++) Console.WriteLine((i == 0? " > ": "   ") + option[i]);
-            int row = 0; // pozice kurzoru
-            ConsoleKeyInfo keyInfo; // informace o stisknuté klávese
-            Console.CursorVisible = false; //zneviditelním kurzor
-            do // dělej
+            Console.SetCursorPosition(0, cursorPosition);
+            foreach (string option in options) Console.WriteLine((Console.CursorTop - cursorPosition == 0 ? " > " : "   ") + option);
+            int currentRow = 0;
+            ConsoleKeyInfo keyInfo;
+            Console.CursorVisible = false;
+            do
             {
-                keyInfo = Console.ReadKey(true); // čte klávesy
-                if (keyInfo.Key == ConsoleKey.DownArrow || (keyInfo.Key == ConsoleKey.UpArrow)) //pokud je klávesa šipka nahoru nebo dolu
+                keyInfo = Console.ReadKey(true);
+                if (keyInfo.Key == ConsoleKey.DownArrow || (keyInfo.Key == ConsoleKey.UpArrow))
                 {
-                    Console.SetCursorPosition(1, row); // nastaví pozici kurzoru
-                    Console.Write(" "); //napíše mezeru tam kde byla šipka/kurzor
-                    row += (keyInfo.Key == ConsoleKey.DownArrow) ? 1 : -1; // změní pozici kurzoru
-                    row = (row + option.Length) % option.Length;
-                    Console.SetCursorPosition(1, row); // nastaví pozici
-                    Console.Write(">"); //napíše šipku tam kde je šipka/kurzor
+                    rewriteTo(currentRow + cursorPosition, " ");
+                    currentRow += (keyInfo.Key == ConsoleKey.DownArrow) ? 1 : -1;
+                    currentRow = (currentRow + options.Length) % options.Length;
+                    rewriteTo(currentRow + cursorPosition, ">");
                 }
             }
             while (keyInfo.Key != ConsoleKey.Enter); // dokud není zmáčknut enter
             Console.Clear();
-            return row;
+            return currentRow;
         }
-        private static float numberCheck(string text)
+
+        private static void rewriteTo(int currentRow, string replacement)
         {
-            return numberCheck(text, 0);
+            Console.SetCursorPosition(1, currentRow);
+            Console.Write(replacement);
         }
 
+       
 
-        private static float numberCheck(string text, int anotherCondition) //1 - nula, 2 - celé číslo, 3 - rozsah
+
+        
+
+        private static float numberCheck(string text, int anotherCondition, char ab) //1 - nula, 2 - celé číslo, 3 - rozsah
         {
             float number = 0;
             Boolean isValid = false;
-            Boolean isVhole, isBetween, isNotZero, isNumber;
+            Boolean isVhole, isBetween, isNotZero, isNumber, isA;
+            isA = ab == 'a';
+
             while (!isValid)
             {
                 Console.Write(text);
                 string input = Console.ReadLine();
                 isNumber = float.TryParse(input, out number);
-                isNotZero = !(anotherCondition == 1 && number == 0);
-                isVhole = !(anotherCondition == 2 && number % 1 != 0);
-                isBetween = !(anotherCondition == 3 && ((number > 36) || (number < 2) || (number % 1 != 0)));
+                isNotZero = !(anotherCondition == 3 && number == 0f);
+                isVhole = !(isA && anotherCondition == 5 && number % 1 != 0);
+                isBetween = !(!isA && anotherCondition == 5 && ((number > 36) || (number < 2) || (number % 1 != 0)));
 
                 if (isNumber && isVhole && isNotZero && isBetween)
                 {
@@ -122,9 +186,9 @@ namespace Calculator
                 else
                 {
                     MessageBox.Show(
-                        !isNotZero? "Tak teoreticky je to ±∞, ale oficiálně ti musím sdělit, že toto není validní vstup, protože nulou dělit nelze. Zkus to znovu.":
-                        !isVhole? "Prosím zadej celé číslo, necelé zatím neumím.":
-                        !isBetween? "Prosím zadej celé číslo v rozahu 2-36":
+                        !isNotZero ? "Tak teoreticky je to ±∞, ale oficiálně ti musím sdělit, že toto není validní vstup, protože nulou dělit nelze. Zkus to znovu." :
+                        !isVhole ? "Prosím zadej celé číslo, necelé zatím neumím." :
+                        !isBetween ? "Prosím zadej celé číslo v rozahu 2-36" :
                         "Toto není validní vstup. Zkus to znovu", "Nevalidní vstup");
                     Console.SetCursorPosition(0, Console.CursorTop - 1);
                     Console.Write(new string(' ', Console.WindowWidth - 1));
