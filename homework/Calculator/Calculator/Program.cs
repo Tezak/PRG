@@ -6,38 +6,12 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
-/*
- * Made by Jan Borecky for PRG seminar at Gymnazium Voderadska, year 2023-2024.
- * Extended by students.
- */
-
 namespace Calculator
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            /*
-             * Pokud se budes chtit na neco zeptat a zrovna budu pomahat jinde, zkus se zeptat ChatGPT ;) - https://chat.openai.com/
-             * 
-             * ZADANI
-             * Vytvor program ktery bude fungovat jako kalkulacka. Kroky programu budou nasledujici:
-             * 1) Nacte vstup pro prvni cislo od uzivatele (vyuzijte metodu Console.ReadLine() - https://learn.microsoft.com/en-us/dotnet/api/system.console.readline?view=netframework-4.8.
-             * 2) Zkonvertuje vstup od uzivatele ze stringu do integeru - https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/types/how-to-convert-a-string-to-a-number.
-             * 3) Nacte vstup pro druhe cislo od uzivatele a zkonvertuje ho do integeru. (zopakovani kroku 1 a 2 pro druhe cislo)
-             * 4) Nacte vstup pro ciselnou operaci. Rozmysli si, jak operace nazves. Muze to byt "soucet", "rozdil" atd. nebo napr "+", "-", nebo jakkoliv jinak.
-             * 5) Nadefinuj integerovou promennou result a prirad ji prozatimne hodnotu 0.
-             * 6) Vytvor podminky (if statement), podle kterych urcis, co se bude s cisly dit podle zadane operace
-             *    a proved danou operaci - https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/selection-statements.
-             * 7) Vypis promennou result do konzole
-             * 
-             * Mozna rozsireni programu pro rychliky / na doma (na poradi nezalezi):
-             * 1) Vypis do konzole pred nactenim kazdeho uzivatelova vstupu co po nem chces
-             * 2) a) Kontroluj, ze uzivatel do vstupu zadal, co mel (cisla, popr. ciselnou operaci). Pokud zadal neco jineho, napis mu, co ma priste zadat a program ukoncete.
-             * 2) b) To same, co a) ale misto ukonceni programu opakovane cti vstup, dokud uzivatel nezada to, co ma
-             *       - https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/iteration-statements#the-while-statement
-             * 3) Umozni uzivateli zadavat i desetinna cisla, tedy prekopej kalkulacku tak, aby umela pracovat s floaty
-             */
             string[] operations = { /*0*/"sčítání", /*1*/"odčítání", /*2*/"násobení", /*3*/"dělení", /*4*/"mocnění", /*5*/"převod na jinou sooustavu" };
             float a, b;
 
@@ -45,11 +19,13 @@ namespace Calculator
 
             getNumbers(out a,out b, operation);
 
-            string result = (operation == 5)? result = transmission(a): countIt(a, b, operation);
+            string result = countIt(a, b, operation);
+
+            Console.WriteLine(new string('_', ("Výsledek" + result.ToString()).Length + 2));
 
             Console.WriteLine("Výsledek: " + result);
 
-            Console.ReadKey(); //Toto nech jako posledni radek, aby se program neukoncil ihned, ale cekal na stisk klavesy od uzivatele.
+            Console.ReadKey(); 
         }
 
         private static string countIt(float a, float b, int operation)
@@ -59,32 +35,35 @@ namespace Calculator
                 operation == 1 ? a - b :
                 operation == 2 ? a * b :
                 operation == 3 ? a / b :
-                operation == 4 ? Math.Pow(a, b) :0;
+                operation == 4 ? Math.Pow(a, b):
+                Convert.ToSingle(transmission(a, b));
 
             return result.ToString();
         }
 
-        private static string transmission(float a)
+        private static string transmission(float a, float b)
         {
             string alphabet = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             string result = "";
-            int numeralSystem = 16;
+            int numeralSystem = Convert.ToInt32(b);
             int number = Convert.ToInt32(a);
+            Boolean negative = number < 0;
+            number *= negative ? -1 : 1;
             while (number != 0)
             { 
                 result = alphabet[number % numeralSystem] + result;
                 number = (number - number % numeralSystem) / numeralSystem;
             }
-
+            result = negative ? "-" + result : result;
             return Convert.ToString(result);
         }
 
         static void getNumbers(out float a, out float b, int operation)
         {
             string[] textA = {"sčítanec: ","menšenec: ","činitel: ","dělenec: ","základ: ","číslo: "};
-            a = numberCheck(textA[operation]);
-            string[] textB = { "sčítanec: ", "menšitel: ", "činitel: ", "dělitel: ", "exponent: "};
-            b = operation == 3? numberCheck(textB[operation],true) : operation != 5? numberCheck(textB[operation]): 0;
+            a = operation == 5? numberCheck(textA[operation], 2): numberCheck(textA[operation]);
+            string[] textB = { "sčítanec: ", "menšitel: ", "činitel: ", "dělitel: ", "exponent: ", "soustava: "};
+            b = operation == 5 ? numberCheck(textB[operation], 3) : operation == 3? numberCheck(textB[operation], 1) : numberCheck(textB[operation]);
         }
 
         private static int choose(string[] option)
@@ -113,26 +92,35 @@ namespace Calculator
         }
         private static float numberCheck(string text)
         {
-            return numberCheck(text, false);
+            return numberCheck(text, 0);
         }
 
 
-        private static float numberCheck(string text, Boolean division)
+        private static float numberCheck(string text, int anotherCondition) //1 - nula, 2 - celé číslo, 3 - rozsah
         {
             float number = 0;
             Boolean isValid = false;
+            Boolean isVhole, isBetween, isNotZero, isNumber;
             while (!isValid)
             {
                 Console.Write(text);
                 string input = Console.ReadLine();
+                isNumber = float.TryParse(input, out number);
+                isNotZero = !(anotherCondition == 1 && number == 0);
+                isVhole = !(anotherCondition == 2 && number % 1 != 0);
+                isBetween = !(anotherCondition == 3 && ((number > 35) || (number < 2) || (number % 1 != 0)));
 
-                if (float.TryParse(input, out number) && !(division && number == 0))
+                if (isNumber && isVhole && isNotZero && isBetween)
                 {
                     isValid = true;
                 }
                 else
                 {
-                    MessageBox.Show((division && number == 0)? "Tak teoreticky je to ±∞, ale oficiálně ti musím sdělit, že toto není validní vstup, protože nulou dělit nelze. Zkus to znovu.":"Toto není validní vstup. Zkus to znovu", "Nevalidní vstup");
+                    MessageBox.Show(
+                        !isNotZero? "Tak teoreticky je to ±∞, ale oficiálně ti musím sdělit, že toto není validní vstup, protože nulou dělit nelze. Zkus to znovu.":
+                        !isVhole? "Prosím zadej celé číslo, necelé zatím neumím.":
+                        !isBetween? "Prosím zadej celé číslo v rozahu 2-35":
+                        "Toto není validní vstup. Zkus to znovu", "Nevalidní vstup");
                     Console.SetCursorPosition(0, Console.CursorTop - 1);
                     Console.Write(new string(' ', Console.WindowWidth - 1));
                     Console.SetCursorPosition(0, Console.CursorTop);
