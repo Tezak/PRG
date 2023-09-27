@@ -224,7 +224,7 @@ namespace Calculator
                 return true; 
             } 
             else { 
-                MessageBox.Show("\n   (@_\n\\\\\\_\\\n<____\n)" + message, "Nevalidní vstup");
+                MessageBox.Show("\n   (@_\n\\\\\\_\\\n<____)\n" + message, "Nevalidní vstup");
                 return false; 
             }
         }
