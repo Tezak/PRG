@@ -14,18 +14,24 @@ namespace Calculator
         {
             string[] operations = { /*0*/"sčítání", /*1*/"odčítání", /*2*/"násobení", /*3*/"dělení", /*4*/"mocnění", /*5*/"převod na jinou sooustavu" };
             float a, b;
+            int operation;
 
-            int operation = choose(operations);
+            operation = choose(operations); //vybírá počerní operaci
 
-            getNumbers(out a,out b, operation);
+            getNumbers(out a,out b, operation); //přečte čísla
 
-            string result = countIt(a, b, operation);
+            string result = countIt(a, b, operation); //vypočítá
 
-            Console.WriteLine(new string('_', ("Výsledek" + result.ToString()).Length + 2));
-
-            Console.WriteLine("Výsledek: " + result);
+            writeResault(result, operation);
 
             Console.ReadKey(); 
+        }
+
+        private static void writeResault(string result, int operation)
+        {
+            string[] text = { "součet: ", "rozdíl: ", "součin: ", "podíl: ", "mocnina: ", "převedené číslo: " };
+            Console.WriteLine(new string('_', (text[operation] + result.ToString()).Length + 2));
+            Console.WriteLine(text[operation] + result);
         }
 
         private static string countIt(float a, float b, int operation)
@@ -35,24 +41,23 @@ namespace Calculator
                 operation == 1 ? a - b :
                 operation == 2 ? a * b :
                 operation == 3 ? a / b :
-                operation == 4 ? Math.Pow(a, b):
-                Convert.ToSingle(transmission(a, b));
+                operation == 4 ? Math.Pow(a, b): 0;
 
-            return result.ToString();
+            return operation == 5? baseConvertion(a, b): result.ToString();
         }
 
-        private static string transmission(float a, float b)
+        private static string baseConvertion(float a, float b)
         {
             string alphabet = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             string result = "";
-            int numeralSystem = Convert.ToInt32(b);
+            int @base = Convert.ToInt32(b);
             int number = Convert.ToInt32(a);
             Boolean negative = number < 0;
             number *= negative ? -1 : 1;
             while (number != 0)
             { 
-                result = alphabet[number % numeralSystem] + result;
-                number = (number - number % numeralSystem) / numeralSystem;
+                result = alphabet[number % @base] + result;
+                number = (number - number % @base) / @base;
             }
             result = negative ? "-" + result : result;
             return Convert.ToString(result);
@@ -108,7 +113,7 @@ namespace Calculator
                 isNumber = float.TryParse(input, out number);
                 isNotZero = !(anotherCondition == 1 && number == 0);
                 isVhole = !(anotherCondition == 2 && number % 1 != 0);
-                isBetween = !(anotherCondition == 3 && ((number > 35) || (number < 2) || (number % 1 != 0)));
+                isBetween = !(anotherCondition == 3 && ((number > 36) || (number < 2) || (number % 1 != 0)));
 
                 if (isNumber && isVhole && isNotZero && isBetween)
                 {
@@ -119,7 +124,7 @@ namespace Calculator
                     MessageBox.Show(
                         !isNotZero? "Tak teoreticky je to ±∞, ale oficiálně ti musím sdělit, že toto není validní vstup, protože nulou dělit nelze. Zkus to znovu.":
                         !isVhole? "Prosím zadej celé číslo, necelé zatím neumím.":
-                        !isBetween? "Prosím zadej celé číslo v rozahu 2-35":
+                        !isBetween? "Prosím zadej celé číslo v rozahu 2-36":
                         "Toto není validní vstup. Zkus to znovu", "Nevalidní vstup");
                     Console.SetCursorPosition(0, Console.CursorTop - 1);
                     Console.Write(new string(' ', Console.WindowWidth - 1));
