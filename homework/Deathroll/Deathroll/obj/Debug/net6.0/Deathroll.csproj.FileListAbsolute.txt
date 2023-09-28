@@ -1,0 +1,15 @@
+C:\Users\klark\Documents\programování\PRG\homework\Deathroll\Deathroll\bin\Debug\net6.0\Deathroll.exe
+C:\Users\klark\Documents\programování\PRG\homework\Deathroll\Deathroll\bin\Debug\net6.0\Deathroll.deps.json
+C:\Users\klark\Documents\programování\PRG\homework\Deathroll\Deathroll\bin\Debug\net6.0\Deathroll.runtimeconfig.json
+C:\Users\klark\Documents\programování\PRG\homework\Deathroll\Deathroll\bin\Debug\net6.0\Deathroll.dll
+C:\Users\klark\Documents\programování\PRG\homework\Deathroll\Deathroll\bin\Debug\net6.0\Deathroll.pdb
+C:\Users\klark\Documents\programování\PRG\homework\Deathroll\Deathroll\obj\Debug\net6.0\Deathroll.csproj.AssemblyReference.cache
+C:\Users\klark\Documents\programování\PRG\homework\Deathroll\Deathroll\obj\Debug\net6.0\Deathroll.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\klark\Documents\programování\PRG\homework\Deathroll\Deathroll\obj\Debug\net6.0\Deathroll.AssemblyInfoInputs.cache
+C:\Users\klark\Documents\programování\PRG\homework\Deathroll\Deathroll\obj\Debug\net6.0\Deathroll.AssemblyInfo.cs
+C:\Users\klark\Documents\programování\PRG\homework\Deathroll\Deathroll\obj\Debug\net6.0\Deathroll.csproj.CoreCompileInputs.cache
+C:\Users\klark\Documents\programování\PRG\homework\Deathroll\Deathroll\obj\Debug\net6.0\Deathroll.dll
+C:\Users\klark\Documents\programování\PRG\homework\Deathroll\Deathroll\obj\Debug\net6.0\refint\Deathroll.dll
+C:\Users\klark\Documents\programování\PRG\homework\Deathroll\Deathroll\obj\Debug\net6.0\Deathroll.pdb
+C:\Users\klark\Documents\programování\PRG\homework\Deathroll\Deathroll\obj\Debug\net6.0\Deathroll.genruntimeconfig.cache
+C:\Users\klark\Documents\programování\PRG\homework\Deathroll\Deathroll\obj\Debug\net6.0\ref\Deathroll.dll
