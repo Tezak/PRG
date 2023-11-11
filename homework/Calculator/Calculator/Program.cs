@@ -18,7 +18,8 @@ namespace Calculator
                 /*2*/"násobení", 
                 /*3*/"dělení", 
                 /*4*/"mocnění", 
-                /*5*/"převod na jinou soustavu" };
+                /*5*/"převod na jinou soustavu",
+                /*6*/"logaritmus"};
 
             string result;
             bool again;
@@ -92,7 +93,8 @@ namespace Calculator
                 "součin: ", 
                 "podíl: ", 
                 "mocnina: ", 
-                "převedené číslo: " };
+                "převedené číslo: ",
+                "index je: "};
 
             string textO = text[operation];
             Console.WriteLine("   " + new string('_', (textO + result.ToString()).Length + 2));
@@ -106,11 +108,15 @@ namespace Calculator
                 operation == 1 ? a - b :
                 operation == 2 ? a * b :
                 operation == 3 ? a / b :
-                operation == 4 ? Convert.ToSingle(Math.Pow(a, b)) : 0;
+                operation == 4 ? Convert.ToSingle(Math.Pow(a, b)) : 
+                operation == 6 ? Convert.ToSingle(Math.Log(b, a)) : 0;
 
             result = operation == 5? baseConvertion(a, b): fResult.ToString();
         }
 
+        ///<summary>
+        ///This is a description of my function.
+        ///</summary>
         private static string baseConvertion(float a, float b)
         {
             string alphabet = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -138,7 +144,8 @@ namespace Calculator
                 "činitel: ", 
                 "dělenec: ", 
                 "základ: ",
-                "zadávej pouze čísla celá a jako soustavu číslo 2-36 \n\n   číslo v desítkové soustavě: " };
+                "zadávej pouze čísla celá a jako soustavu číslo 2-36 \n\n   číslo v desítkové soustavě: ",
+                "základ: "};
 
             a = numberCheck("   " + textA[operation], operation, 'a');
 
@@ -148,7 +155,8 @@ namespace Calculator
                 "činitel: ", 
                 "dělitel: ", 
                 "exponent: ", 
-                "soustava do které cheš převést: " };
+                "soustava do které cheš převést: ",
+                "argument: "};
 
             b = numberCheck("   " + textB[operation], operation, 'b');
         }
@@ -196,17 +204,19 @@ namespace Calculator
                 Console.CursorVisible = true;
                 string input = Console.ReadLine();
                 string[] inputField = input.Split('=');
-                if(inputField.Length == 2) input = inputField[1];
+                if (inputField.Length == 2) input = inputField[1];
                 Console.CursorVisible = false;
                 bool isNumber = float.TryParse(input, out number);
-                bool isNotZero = !(operation == 3 && number == 0f);
+                bool isNotZero = !(!isA && operation == 3 && number == 0f);
                 bool isWhole = !(isA && operation == 5 && number % 1 != 0);
                 bool isBetween = !(!isA && operation == 5 && ((number > 36) || (number < 2) || (number % 1 != 0)));
+                bool isPositive = !(operation == 6 && (!isA && (number <= 0)) || (isA && (number == 1 || number <= 0)));
 
                 isValid = validate(isNumber, "Toto není validní vstup. Zkus to znovu")
                     && validate(isNotZero, "Tak teoreticky je to ±∞, ale oficiálně ti musím sdělit, že toto není validní vstup, protože nulou dělit nelze. Zkus to znovu.")
                     && validate(isWhole, "Prosím zadej celé číslo, necelé zatím neumím.")
-                    && validate(isBetween, "Prosím zadej celé číslo v rozahu 2-36");
+                    && validate(isBetween, "Prosím zadej celé číslo v rozahu 2-36")
+                    && validate(isPositive, "Prosím zadej nezáporné číslo");
                 if(!isValid)
                 {
                     Console.SetCursorPosition(cursorColumn, Console.CursorTop - 1);

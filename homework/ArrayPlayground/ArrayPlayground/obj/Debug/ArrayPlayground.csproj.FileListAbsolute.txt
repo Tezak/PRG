@@ -1,0 +1,8 @@
+C:\Users\klark\Documents\programování\PRG\ArrayPlayground\ArrayPlayground\bin\Debug\ArrayPlayground.exe.config
+C:\Users\klark\Documents\programování\PRG\ArrayPlayground\ArrayPlayground\bin\Debug\ArrayPlayground.exe
+C:\Users\klark\Documents\programování\PRG\ArrayPlayground\ArrayPlayground\bin\Debug\ArrayPlayground.pdb
+C:\Users\klark\Documents\programování\PRG\ArrayPlayground\ArrayPlayground\obj\Debug\ArrayPlayground.csproj.AssemblyReference.cache
+C:\Users\klark\Documents\programování\PRG\ArrayPlayground\ArrayPlayground\obj\Debug\ArrayPlayground.csproj.SuggestedBindingRedirects.cache
+C:\Users\klark\Documents\programování\PRG\ArrayPlayground\ArrayPlayground\obj\Debug\ArrayPlayground.csproj.CoreCompileInputs.cache
+C:\Users\klark\Documents\programování\PRG\ArrayPlayground\ArrayPlayground\obj\Debug\ArrayPlayground.exe
+C:\Users\klark\Documents\programování\PRG\ArrayPlayground\ArrayPlayground\obj\Debug\ArrayPlayground.pdb

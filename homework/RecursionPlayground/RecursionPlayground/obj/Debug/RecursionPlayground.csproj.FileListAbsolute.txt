@@ -1,0 +1,8 @@
+C:\Users\klark\Documents\programování\PRG\homework\RecursionPlayground\RecursionPlayground\bin\Debug\RecursionPlayground.exe.config
+C:\Users\klark\Documents\programování\PRG\homework\RecursionPlayground\RecursionPlayground\bin\Debug\RecursionPlayground.exe
+C:\Users\klark\Documents\programování\PRG\homework\RecursionPlayground\RecursionPlayground\bin\Debug\RecursionPlayground.pdb
+C:\Users\klark\Documents\programování\PRG\homework\RecursionPlayground\RecursionPlayground\obj\Debug\RecursionPlayground.csproj.AssemblyReference.cache
+C:\Users\klark\Documents\programování\PRG\homework\RecursionPlayground\RecursionPlayground\obj\Debug\RecursionPlayground.csproj.SuggestedBindingRedirects.cache
+C:\Users\klark\Documents\programování\PRG\homework\RecursionPlayground\RecursionPlayground\obj\Debug\RecursionPlayground.csproj.CoreCompileInputs.cache
+C:\Users\klark\Documents\programování\PRG\homework\RecursionPlayground\RecursionPlayground\obj\Debug\RecursionPlayground.exe
+C:\Users\klark\Documents\programování\PRG\homework\RecursionPlayground\RecursionPlayground\obj\Debug\RecursionPlayground.pdb

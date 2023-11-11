@@ -1,0 +1,15 @@
+C:\Users\klark\Documents\programování\PRG\homework\HanojskaVez\HanojskaVez\bin\Debug\net6.0\HanojskaVez.exe
+C:\Users\klark\Documents\programování\PRG\homework\HanojskaVez\HanojskaVez\bin\Debug\net6.0\HanojskaVez.deps.json
+C:\Users\klark\Documents\programování\PRG\homework\HanojskaVez\HanojskaVez\bin\Debug\net6.0\HanojskaVez.runtimeconfig.json
+C:\Users\klark\Documents\programování\PRG\homework\HanojskaVez\HanojskaVez\bin\Debug\net6.0\HanojskaVez.dll
+C:\Users\klark\Documents\programování\PRG\homework\HanojskaVez\HanojskaVez\bin\Debug\net6.0\HanojskaVez.pdb
+C:\Users\klark\Documents\programování\PRG\homework\HanojskaVez\HanojskaVez\obj\Debug\net6.0\HanojskaVez.csproj.AssemblyReference.cache
+C:\Users\klark\Documents\programování\PRG\homework\HanojskaVez\HanojskaVez\obj\Debug\net6.0\HanojskaVez.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\klark\Documents\programování\PRG\homework\HanojskaVez\HanojskaVez\obj\Debug\net6.0\HanojskaVez.AssemblyInfoInputs.cache
+C:\Users\klark\Documents\programování\PRG\homework\HanojskaVez\HanojskaVez\obj\Debug\net6.0\HanojskaVez.AssemblyInfo.cs
+C:\Users\klark\Documents\programování\PRG\homework\HanojskaVez\HanojskaVez\obj\Debug\net6.0\HanojskaVez.csproj.CoreCompileInputs.cache
+C:\Users\klark\Documents\programování\PRG\homework\HanojskaVez\HanojskaVez\obj\Debug\net6.0\HanojskaVez.dll
+C:\Users\klark\Documents\programování\PRG\homework\HanojskaVez\HanojskaVez\obj\Debug\net6.0\refint\HanojskaVez.dll
+C:\Users\klark\Documents\programování\PRG\homework\HanojskaVez\HanojskaVez\obj\Debug\net6.0\HanojskaVez.pdb
+C:\Users\klark\Documents\programování\PRG\homework\HanojskaVez\HanojskaVez\obj\Debug\net6.0\HanojskaVez.genruntimeconfig.cache
+C:\Users\klark\Documents\programování\PRG\homework\HanojskaVez\HanojskaVez\obj\Debug\net6.0\ref\HanojskaVez.dll

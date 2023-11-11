@@ -1,0 +1,8 @@
+C:\Users\klark\Documents\programování\PRG\homework\SearchPlayground\SearchPlayground\bin\Debug\SearchPlayground.exe.config
+C:\Users\klark\Documents\programování\PRG\homework\SearchPlayground\SearchPlayground\bin\Debug\SearchPlayground.exe
+C:\Users\klark\Documents\programování\PRG\homework\SearchPlayground\SearchPlayground\bin\Debug\SearchPlayground.pdb
+C:\Users\klark\Documents\programování\PRG\homework\SearchPlayground\SearchPlayground\obj\Debug\SearchPlayground.csproj.AssemblyReference.cache
+C:\Users\klark\Documents\programování\PRG\homework\SearchPlayground\SearchPlayground\obj\Debug\SearchPlayground.csproj.SuggestedBindingRedirects.cache
+C:\Users\klark\Documents\programování\PRG\homework\SearchPlayground\SearchPlayground\obj\Debug\SearchPlayground.csproj.CoreCompileInputs.cache
+C:\Users\klark\Documents\programování\PRG\homework\SearchPlayground\SearchPlayground\obj\Debug\SearchPlayground.exe
+C:\Users\klark\Documents\programování\PRG\homework\SearchPlayground\SearchPlayground\obj\Debug\SearchPlayground.pdb

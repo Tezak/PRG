@@ -1,0 +1,8 @@
+C:\Users\klark\Documents\programování\PRG\homework\2D Array Playground\2D Array Playground\bin\Debug\2D Array Playground.exe.config
+C:\Users\klark\Documents\programování\PRG\homework\2D Array Playground\2D Array Playground\bin\Debug\2D Array Playground.exe
+C:\Users\klark\Documents\programování\PRG\homework\2D Array Playground\2D Array Playground\bin\Debug\2D Array Playground.pdb
+C:\Users\klark\Documents\programování\PRG\homework\2D Array Playground\2D Array Playground\obj\Debug\2D Array Playground.csproj.AssemblyReference.cache
+C:\Users\klark\Documents\programování\PRG\homework\2D Array Playground\2D Array Playground\obj\Debug\2D Array Playground.csproj.SuggestedBindingRedirects.cache
+C:\Users\klark\Documents\programování\PRG\homework\2D Array Playground\2D Array Playground\obj\Debug\2D Array Playground.csproj.CoreCompileInputs.cache
+C:\Users\klark\Documents\programování\PRG\homework\2D Array Playground\2D Array Playground\obj\Debug\2D Array Playground.exe
+C:\Users\klark\Documents\programování\PRG\homework\2D Array Playground\2D Array Playground\obj\Debug\2D Array Playground.pdb
