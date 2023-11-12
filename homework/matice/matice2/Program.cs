@@ -1,14 +1,10 @@
-﻿using System.Globalization;
-using System.Security.Cryptography;
-using System.Threading;
-
-internal class Program
+﻿internal class Program
 {
     private static int[,]? matrix;
     private static string[] operations = { 
         /*0*/ "Vypiš n-tý řádek pole", 
         /*1*/ "Vypiš n-tý sloupec pole", 
-        /*2*/ "Prohoď prvek na souřadnicích[xFirst, yFirst] s prvkem na souřadnicích[xSecond, ySecond]", 
+        /*2*/ "Prohoď 2 prvky", 
         /*3*/ "Prohoď n-tý řádek v poli s m-tým řádkem", 
         /*4*/ "Prohoď n-tý sloupec v poli s m-tým sloupcem",
         /*5*/ "Vynásobení matice",
@@ -27,7 +23,7 @@ internal class Program
 
     private static void Main(string[] args)
     {
-
+        DucksAnimation();
         FillMatrix();
         WriteMatrix();
 
@@ -56,6 +52,36 @@ internal class Program
         } while (askIfAgain()); //dokud chce uživatel pokračovat v počítání
     }
 
+    /// <summary>Zobrazí na konzoli animaci kachen</summary>
+    private static void DucksAnimation()
+    {
+        Console.CursorVisible = false;
+        string[] ducks = {
+               "      _          _          _          _          _          ",
+               "    >(')____,  >(')____,  >(')____,  >(')____,  >(') ___,    ",
+               "      (` =~~/    (` =~~/    (` =~~/    (` =~~/    (` =~~/    ",
+               "       `---'      `---'      `---'      `---'      `---'     ",
+               "~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~"};
+        for (int i = 0; i < ducks[4].Length; i++)
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                Console.WriteLine(ducks[j]);
+                ducks[j] = ducks[j].Remove(0, 1);
+            }
+            Console.CursorTop = Console.CursorTop - 1;
+            for (int j = 1; j < ducks[4].Length - i; j++)
+            {
+                Console.CursorLeft = j;
+                if (ducks[3][j - 1] == ' ') Console.Write(ducks[4][j]);
+            }
+            Thread.Sleep(100);
+            Console.SetCursorPosition(0, 0);
+        }
+        Console.Clear();
+        Console.CursorVisible = true;
+    }
+
     private static void multiplyTwoMAtrix()
     {
         twoMatrixOperations(2);
@@ -79,28 +105,33 @@ internal class Program
     {
         Console.WriteLine("druhá matice: ");
         int[,] matrix2;
-        string[] valuesType = { "čísla od 1 do a*b", "náhodná čísla" };
-        bool random = Convert.ToBoolean(Choose(valuesType));
+        bool random = Convert.ToBoolean(Choose(new string[] {"čísla od 1 do a*b", "náhodná čísla" }));
+
+        // vytvoření matice pro násobení matic
         if (operation == 2) {
             Console.Write("počet řádků matice 2: ");
-            int b = NumberCheck(2);
-            matrix2 = GenerateValues(random, matrix.GetLength(1), b);
+            int columnNumber = NumberCheck(2);
+            matrix2 = GenerateValues(random, matrix.GetLength(1), columnNumber);
         }
+
+        // vytvoření stejně velké matice
         else matrix2 = GenerateValues(random, matrix.GetLength(0), matrix.GetLength(1));
+
         WriteMatrix(matrix2);
         Console.WriteLine((operation == 0) ? "součet matic:": (operation == 1) ? "rozdíl matic:" : "součin matic");
 
+        // násobení matic
         if (operation == 2)
         {
             int[,] matrix3 = new int[matrix.GetLength(0), matrix2.GetLength(1)];
-            for (int i = 0; i < matrix3.GetLength(0); i++)
+            for (int r = 0; r < matrix3.GetLength(0); r++)
             {
-                for (int j = 0; j < matrix3.GetLength(1); j++)
+                for (int c = 0; c < matrix3.GetLength(1); c++)
                 {
-                    matrix3[i, j] = 0;
+                    matrix3[r, c] = 0;
                     for (int k = 0; k < matrix.GetLength(1); k++)
                     {
-                        matrix3[i, j] += matrix[i, k] * matrix2[k, j];
+                        matrix3[r, c] += matrix[r, k] * matrix2[k, c];
                     }
                 }
             }
@@ -108,18 +139,19 @@ internal class Program
             WriteMatrix();
             return;
         }
+
+        // odčítání nebo sčítání matic
         else 
         {
-            for (int i = 0; i < matrix.GetLength(0); i++)
+            for (int r = 0; r < matrix.GetLength(0); r++)
             {
-                for (int j = 0; j < matrix.GetLength(1); j++)
+                for (int c = 0; c < matrix.GetLength(1); c++)
                 {
-                    matrix[i, j] = (operation == 0) ? (matrix[i, j] + matrix2[i, j]) : (matrix[i, j] - matrix2[i, j]);
+                    matrix[r, c] = (operation == 0) ? (matrix[r, c] + matrix2[r, c]) : (matrix[r, c] - matrix2[r, c]);
                 }
             }
         }
         WriteMatrix();
-
     }
 
     /// <summary>Dává matici rozměry a naplní ji hodnotami</summary>
@@ -148,21 +180,20 @@ internal class Program
     /// <returns>
     /// Pokud je random true, jsou čísla náhodná, pokud ne, jsou od 1 do a*b.
     /// </returns>
-    private static int[,] GenerateValues(bool random, int columns, int rows)
+    private static int[,] GenerateValues(bool random, int rowsNumber, int columnsNumber)
     {
         int max = 2000;
-        int[,] matrix = new int[columns, rows];
+        int[,] matrix = new int[rowsNumber, columnsNumber];
         int number = 1;
         Random rnd = new Random();
-        for (int i = 0; i < columns; i++)
+        for (int r = 0; r < rowsNumber; r++)
         {
-            for (int j = 0; j < rows; j++)
+            for (int c = 0; c < columnsNumber; c++)
             {
-                matrix[i, j] = random ? rnd.Next(0, max) : number;
+                matrix[r, c] = random ? rnd.Next(0, max) : number;
                 number++;
             }
         }
-        if (!random) max = number; // nastavuje maximální honotu čísla, které se může vyskytovat v poli
         return matrix;
     }
 
@@ -187,11 +218,11 @@ internal class Program
         Console.WriteLine("Transpozice matice");
         int[,] transposedMatrix = new int[matrix.GetLength(1), matrix.GetLength(0)];
 
-        for (int i = 0; i < matrix.GetLength(0); i++)
+        for (int r = 0; r < matrix.GetLength(0); r++)
         {
-            for (int j = 0; j < matrix.GetLength(1); j++)
+            for (int c = 0; c < matrix.GetLength(1); c++)
             {
-                transposedMatrix[j, i] = matrix[i, j];
+                transposedMatrix[c, r] = matrix[r, c];
             }
         }
         matrix = transposedMatrix;
@@ -209,9 +240,9 @@ internal class Program
         Console.Write("číslem: ");
         int number = NumberCheck();
 
-        for (int j = 0; j < matrix.GetLength(0); j++)
+        for (int r = 0; r < matrix.GetLength(0); r++)
         {
-            matrix[j, column] *= number;
+            matrix[r, column] *= number;
         }
         WriteMatrix();
     }
@@ -227,9 +258,9 @@ internal class Program
         Console.Write("číslem: ");
         int number = NumberCheck();
 
-        for (int j = 0; j < matrix.GetLength(1); j++)
+        for (int c = 0; c < matrix.GetLength(1); c++)
         {
-            matrix[row, j] *= number;
+            matrix[row, c] *= number;
         }
         WriteMatrix();
     }
@@ -243,11 +274,11 @@ internal class Program
         Console.Write("Násobit číslem: ");
         int number = NumberCheck();
 
-        for (int i = 0; i < matrix.GetLength(0); i++)
+        for (int r = 0; r < matrix.GetLength(0); r++)
         {
-            for (int j = 0; j < matrix.GetLength(1); j++)
+            for (int c = 0; c < matrix.GetLength(1); c++)
             {
-                matrix[i, j] = matrix[i, j] * number;
+                matrix[r, c] = matrix[r, c] * number;
             }
         }
         WriteMatrix();
@@ -260,12 +291,12 @@ internal class Program
     private static void reverseSecondaryDiagonal()
     {
         Console.WriteLine("Otočení pořadí prvků vedlejší diagonály");
-        for (int i = 0; 2 * i < matrix.GetLength(0); i++)
+        for (int r = 0; 2 * r < matrix.GetLength(0); r++)
         {
-            int j = matrix.GetLength(0) - i - 1;
-            int save = matrix[j, i];
-            matrix[j, i] = matrix[i, j];
-            matrix[i, j] = save;
+            int c = matrix.GetLength(0) - r - 1;
+            int save = matrix[c, r];
+            matrix[c, r] = matrix[r, c];
+            matrix[r, c] = save;
         }
         WriteMatrix();
     }
@@ -330,11 +361,11 @@ internal class Program
         Console.Write("se sloupcem: ");
         int mColSwap = NumberCheck(1);
 
-        for (int i = 0; i < matrix.GetLength(0); i++)
+        for (int r = 0; r < matrix.GetLength(0); r++)
         {
-            int save = matrix[i, nColSwap];
-            matrix[i, nColSwap] = matrix[i, mColSwap];
-            matrix[i, mColSwap] = save;
+            int save = matrix[r, nColSwap];
+            matrix[r, nColSwap] = matrix[r, mColSwap];
+            matrix[r, mColSwap] = save;
         }
         WriteMatrix();
     }
@@ -350,11 +381,11 @@ internal class Program
         Console.Write("s řádkem: ");
         int mRowSwap = NumberCheck(0);
 
-        for (int j = 0; j < matrix.GetLength(1); j++)
+        for (int c = 0; c < matrix.GetLength(1); c++)
         {
-            int save = matrix[nRowSwap, j];
-            matrix[nRowSwap, j] = matrix[mRowSwap, j];
-            matrix[mRowSwap, j] = save;
+            int save = matrix[nRowSwap, c];
+            matrix[nRowSwap, c] = matrix[mRowSwap, c];
+            matrix[mRowSwap, c] = save;
         }
         WriteMatrix();
     }
@@ -365,18 +396,18 @@ internal class Program
     /// </returns>
     private static void swapTwoNumbers()
     {
-        Console.Write("Prohození čísla x1: ");
-        int xFirst = NumberCheck(0);
-        Console.Write("y1: ");
-        int yFirst = NumberCheck(1);
-        Console.Write("s číslem číslem x2: ");
-        int xSecond = NumberCheck(0);
-        Console.Write("y2: ");
-        int ySecond = NumberCheck(1);
+        Console.Write("Prohození čísla na řádku: ");
+        int rowFirst = NumberCheck(0);
+        Console.Write("ve sloupci: ");
+        int coulmnFirst = NumberCheck(1);
+        Console.Write("s číslem číslem na řádku: ");
+        int rowSecond = NumberCheck(0);
+        Console.Write("ve sloupci: ");
+        int columnSecond = NumberCheck(1);
 
-        int save = matrix[xFirst, yFirst];
-        matrix[xFirst, yFirst] = matrix[xSecond, ySecond];
-        matrix[xSecond, ySecond] = save;
+        int save = matrix[rowFirst, coulmnFirst];
+        matrix[rowFirst, coulmnFirst] = matrix[rowSecond, columnSecond];
+        matrix[rowSecond, columnSecond] = save;
 
         WriteMatrix();
     }
@@ -389,9 +420,9 @@ internal class Program
     {
         Console.Write("Vypsání sloupce: ");
         int nColumn = NumberCheck(1);
-        for (int i = 0; i < matrix.GetLength(0); i++)
+        for (int r = 0; r < matrix.GetLength(0); r++)
         {
-            Console.Write(matrix[i, nColumn] + " ");
+            Console.Write(matrix[r, nColumn] + " ");
         }
         Console.WriteLine("\n");
     }
@@ -404,9 +435,9 @@ internal class Program
     {
         Console.Write("Vypsání řádku: ");
         int nRow = NumberCheck(0);
-        for (int i = 0; i < matrix.GetLength(1); i++)
+        for (int c = 0; c < matrix.GetLength(1); c++)
         {
-            Console.Write(matrix[nRow, i] + " ");
+            Console.Write(matrix[nRow, c] + " ");
         }
         Console.WriteLine("\n");
     }
@@ -422,7 +453,7 @@ internal class Program
         Console.SetCursorPosition(0, cursorPosition);
         for (int i = 0; i < optionsCount; i++)
         {
-            Console.WriteLine((Console.CursorTop - cursorPosition == 0 ? " > " : "   ") + options[i]);
+            Console.WriteLine((i == 0 ? " > " : "   ") + options[i]);
         }
         cursorPosition = Console.CursorTop - optionsCount;
         //foreach (string option in options) Console.WriteLine((Console.CursorTop - cursorPosition == 0 ? " > " : "   ") + option);
@@ -471,22 +502,29 @@ internal class Program
     {
         int digitsMax = 0; //maximální počet cifer
 
-        for (int i = 0; i < matrix.GetLength(0); i++)
+        for (int r = 0; r < matrix.GetLength(0); r++)
         {
-            for (int j = 0; j < matrix.GetLength(1); j++)
+            for (int c = 0; c < matrix.GetLength(1); c++)
             {
-                int digits = Convert.ToString(matrix[i, j]).Length;
+                int digits = Convert.ToString(matrix[r, c]).Length;
                 if (digits > digitsMax) digitsMax = digits;
             }
         }
 
-        for (int i = 0; i < matrix.GetLength(0); i++)
+        int left = 0;
+        for (int r = 0; r < matrix.GetLength(0); r++)
         {
-            for (int j = 0; j < matrix.GetLength(1); j++)
+            left = 0;
+            for (int c = 0; c < matrix.GetLength(1); c++)
             {
-                Thread.Sleep(10);
-                Console.CursorLeft = j * (digitsMax + 1);
-                Console.Write(matrix[i, j]);
+                Console.CursorLeft = left; //určuje poici kurzoru, aby to bylo hezky zarovnané
+                left += (digitsMax + 1);
+                if (left > (Console.WindowWidth - digitsMax)) 
+                {
+                    left = 0;
+                    Console.WriteLine();
+                }
+                Console.Write(matrix[r, c]);
             }
             Console.WriteLine();
         }

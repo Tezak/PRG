@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\klark\\Documents\\programování\\PRG\\homework\\matice3\\matice2\\matice2.csproj": {}
+    "C:\\Users\\klark\\Documents\\programování\\PRG\\homework\\matice - kopie\\matice2\\matice2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\klark\\Documents\\programování\\PRG\\homework\\matice3\\matice2\\matice2.csproj": {
+    "C:\\Users\\klark\\Documents\\programování\\PRG\\homework\\matice - kopie\\matice2\\matice2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\klark\\Documents\\programování\\PRG\\homework\\matice3\\matice2\\matice2.csproj",
+        "projectUniqueName": "C:\\Users\\klark\\Documents\\programování\\PRG\\homework\\matice - kopie\\matice2\\matice2.csproj",
         "projectName": "matice2",
-        "projectPath": "C:\\Users\\klark\\Documents\\programování\\PRG\\homework\\matice3\\matice2\\matice2.csproj",
+        "projectPath": "C:\\Users\\klark\\Documents\\programování\\PRG\\homework\\matice - kopie\\matice2\\matice2.csproj",
         "packagesPath": "C:\\Users\\klark\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\klark\\Documents\\programování\\PRG\\homework\\matice3\\matice2\\obj\\",
+        "outputPath": "C:\\Users\\klark\\Documents\\programování\\PRG\\homework\\matice - kopie\\matice2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\klark\\AppData\\Roaming\\NuGet\\NuGet.Config",
