@@ -1,0 +1,8 @@
+C:\Users\klark\Documents\programování\PRG\homework\SortingPlayground\SortingPlayground\bin\Debug\SortingPlayground.exe.config
+C:\Users\klark\Documents\programování\PRG\homework\SortingPlayground\SortingPlayground\bin\Debug\SortingPlayground.exe
+C:\Users\klark\Documents\programování\PRG\homework\SortingPlayground\SortingPlayground\bin\Debug\SortingPlayground.pdb
+C:\Users\klark\Documents\programování\PRG\homework\SortingPlayground\SortingPlayground\obj\Debug\SortingPlayground.csproj.AssemblyReference.cache
+C:\Users\klark\Documents\programování\PRG\homework\SortingPlayground\SortingPlayground\obj\Debug\SortingPlayground.csproj.SuggestedBindingRedirects.cache
+C:\Users\klark\Documents\programování\PRG\homework\SortingPlayground\SortingPlayground\obj\Debug\SortingPlayground.csproj.CoreCompileInputs.cache
+C:\Users\klark\Documents\programování\PRG\homework\SortingPlayground\SortingPlayground\obj\Debug\SortingPlayground.exe
+C:\Users\klark\Documents\programování\PRG\homework\SortingPlayground\SortingPlayground\obj\Debug\SortingPlayground.pdb

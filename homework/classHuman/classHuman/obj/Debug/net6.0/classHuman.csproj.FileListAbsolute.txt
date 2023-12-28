@@ -1,0 +1,15 @@
+C:\Users\klark\Documents\programování\PRG\homework\classHuman\classHuman\bin\Debug\net6.0\classHuman.exe
+C:\Users\klark\Documents\programování\PRG\homework\classHuman\classHuman\bin\Debug\net6.0\classHuman.deps.json
+C:\Users\klark\Documents\programování\PRG\homework\classHuman\classHuman\bin\Debug\net6.0\classHuman.runtimeconfig.json
+C:\Users\klark\Documents\programování\PRG\homework\classHuman\classHuman\bin\Debug\net6.0\classHuman.dll
+C:\Users\klark\Documents\programování\PRG\homework\classHuman\classHuman\bin\Debug\net6.0\classHuman.pdb
+C:\Users\klark\Documents\programování\PRG\homework\classHuman\classHuman\obj\Debug\net6.0\classHuman.csproj.AssemblyReference.cache
+C:\Users\klark\Documents\programování\PRG\homework\classHuman\classHuman\obj\Debug\net6.0\classHuman.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\klark\Documents\programování\PRG\homework\classHuman\classHuman\obj\Debug\net6.0\classHuman.AssemblyInfoInputs.cache
+C:\Users\klark\Documents\programování\PRG\homework\classHuman\classHuman\obj\Debug\net6.0\classHuman.AssemblyInfo.cs
+C:\Users\klark\Documents\programování\PRG\homework\classHuman\classHuman\obj\Debug\net6.0\classHuman.csproj.CoreCompileInputs.cache
+C:\Users\klark\Documents\programování\PRG\homework\classHuman\classHuman\obj\Debug\net6.0\classHuman.dll
+C:\Users\klark\Documents\programování\PRG\homework\classHuman\classHuman\obj\Debug\net6.0\refint\classHuman.dll
+C:\Users\klark\Documents\programování\PRG\homework\classHuman\classHuman\obj\Debug\net6.0\classHuman.pdb
+C:\Users\klark\Documents\programování\PRG\homework\classHuman\classHuman\obj\Debug\net6.0\classHuman.genruntimeconfig.cache
+C:\Users\klark\Documents\programování\PRG\homework\classHuman\classHuman\obj\Debug\net6.0\ref\classHuman.dll

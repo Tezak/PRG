@@ -1,0 +1,60 @@
+C:\Users\klark\Documents\programování\PRG\homework\matice2\matice2\bin\Debug\net6.0\matice2.exe
+C:\Users\klark\Documents\programování\PRG\homework\matice2\matice2\bin\Debug\net6.0\matice2.deps.json
+C:\Users\klark\Documents\programování\PRG\homework\matice2\matice2\bin\Debug\net6.0\matice2.runtimeconfig.json
+C:\Users\klark\Documents\programování\PRG\homework\matice2\matice2\bin\Debug\net6.0\matice2.dll
+C:\Users\klark\Documents\programování\PRG\homework\matice2\matice2\bin\Debug\net6.0\matice2.pdb
+C:\Users\klark\Documents\programování\PRG\homework\matice2\matice2\obj\Debug\net6.0\matice2.csproj.AssemblyReference.cache
+C:\Users\klark\Documents\programování\PRG\homework\matice2\matice2\obj\Debug\net6.0\matice2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\klark\Documents\programování\PRG\homework\matice2\matice2\obj\Debug\net6.0\matice2.AssemblyInfoInputs.cache
+C:\Users\klark\Documents\programování\PRG\homework\matice2\matice2\obj\Debug\net6.0\matice2.AssemblyInfo.cs
+C:\Users\klark\Documents\programování\PRG\homework\matice2\matice2\obj\Debug\net6.0\matice2.csproj.CoreCompileInputs.cache
+C:\Users\klark\Documents\programování\PRG\homework\matice2\matice2\obj\Debug\net6.0\matice2.dll
+C:\Users\klark\Documents\programování\PRG\homework\matice2\matice2\obj\Debug\net6.0\refint\matice2.dll
+C:\Users\klark\Documents\programování\PRG\homework\matice2\matice2\obj\Debug\net6.0\matice2.pdb
+C:\Users\klark\Documents\programování\PRG\homework\matice2\matice2\obj\Debug\net6.0\matice2.genruntimeconfig.cache
+C:\Users\klark\Documents\programování\PRG\homework\matice2\matice2\obj\Debug\net6.0\ref\matice2.dll
+C:\Users\klark\Documents\programování\PRG\homework\matice3\matice2\bin\Debug\net6.0\matice2.exe
+C:\Users\klark\Documents\programování\PRG\homework\matice3\matice2\bin\Debug\net6.0\matice2.deps.json
+C:\Users\klark\Documents\programování\PRG\homework\matice3\matice2\bin\Debug\net6.0\matice2.runtimeconfig.json
+C:\Users\klark\Documents\programování\PRG\homework\matice3\matice2\bin\Debug\net6.0\matice2.dll
+C:\Users\klark\Documents\programování\PRG\homework\matice3\matice2\bin\Debug\net6.0\matice2.pdb
+C:\Users\klark\Documents\programování\PRG\homework\matice3\matice2\obj\Debug\net6.0\matice2.csproj.AssemblyReference.cache
+C:\Users\klark\Documents\programování\PRG\homework\matice3\matice2\obj\Debug\net6.0\matice2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\klark\Documents\programování\PRG\homework\matice3\matice2\obj\Debug\net6.0\matice2.AssemblyInfoInputs.cache
+C:\Users\klark\Documents\programování\PRG\homework\matice3\matice2\obj\Debug\net6.0\matice2.AssemblyInfo.cs
+C:\Users\klark\Documents\programování\PRG\homework\matice3\matice2\obj\Debug\net6.0\matice2.csproj.CoreCompileInputs.cache
+C:\Users\klark\Documents\programování\PRG\homework\matice3\matice2\obj\Debug\net6.0\matice2.dll
+C:\Users\klark\Documents\programování\PRG\homework\matice3\matice2\obj\Debug\net6.0\refint\matice2.dll
+C:\Users\klark\Documents\programování\PRG\homework\matice3\matice2\obj\Debug\net6.0\matice2.pdb
+C:\Users\klark\Documents\programování\PRG\homework\matice3\matice2\obj\Debug\net6.0\matice2.genruntimeconfig.cache
+C:\Users\klark\Documents\programování\PRG\homework\matice3\matice2\obj\Debug\net6.0\ref\matice2.dll
+C:\Users\klark\Documents\programování\PRG\homework\matice\matice2\bin\Debug\net6.0\matice2.exe
+C:\Users\klark\Documents\programování\PRG\homework\matice\matice2\bin\Debug\net6.0\matice2.deps.json
+C:\Users\klark\Documents\programování\PRG\homework\matice\matice2\bin\Debug\net6.0\matice2.runtimeconfig.json
+C:\Users\klark\Documents\programování\PRG\homework\matice\matice2\bin\Debug\net6.0\matice2.dll
+C:\Users\klark\Documents\programování\PRG\homework\matice\matice2\bin\Debug\net6.0\matice2.pdb
+C:\Users\klark\Documents\programování\PRG\homework\matice\matice2\obj\Debug\net6.0\matice2.csproj.AssemblyReference.cache
+C:\Users\klark\Documents\programování\PRG\homework\matice\matice2\obj\Debug\net6.0\matice2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\klark\Documents\programování\PRG\homework\matice\matice2\obj\Debug\net6.0\matice2.AssemblyInfoInputs.cache
+C:\Users\klark\Documents\programování\PRG\homework\matice\matice2\obj\Debug\net6.0\matice2.AssemblyInfo.cs
+C:\Users\klark\Documents\programování\PRG\homework\matice\matice2\obj\Debug\net6.0\matice2.csproj.CoreCompileInputs.cache
+C:\Users\klark\Documents\programování\PRG\homework\matice\matice2\obj\Debug\net6.0\matice2.dll
+C:\Users\klark\Documents\programování\PRG\homework\matice\matice2\obj\Debug\net6.0\refint\matice2.dll
+C:\Users\klark\Documents\programování\PRG\homework\matice\matice2\obj\Debug\net6.0\matice2.pdb
+C:\Users\klark\Documents\programování\PRG\homework\matice\matice2\obj\Debug\net6.0\matice2.genruntimeconfig.cache
+C:\Users\klark\Documents\programování\PRG\homework\matice\matice2\obj\Debug\net6.0\ref\matice2.dll
+C:\Users\klark\Documents\programování\PRG\homework\matice - kopie\matice2\bin\Debug\net6.0\matice2.exe
+C:\Users\klark\Documents\programování\PRG\homework\matice - kopie\matice2\bin\Debug\net6.0\matice2.deps.json
+C:\Users\klark\Documents\programování\PRG\homework\matice - kopie\matice2\bin\Debug\net6.0\matice2.runtimeconfig.json
+C:\Users\klark\Documents\programování\PRG\homework\matice - kopie\matice2\bin\Debug\net6.0\matice2.dll
+C:\Users\klark\Documents\programování\PRG\homework\matice - kopie\matice2\bin\Debug\net6.0\matice2.pdb
+C:\Users\klark\Documents\programování\PRG\homework\matice - kopie\matice2\obj\Debug\net6.0\matice2.csproj.AssemblyReference.cache
+C:\Users\klark\Documents\programování\PRG\homework\matice - kopie\matice2\obj\Debug\net6.0\matice2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\klark\Documents\programování\PRG\homework\matice - kopie\matice2\obj\Debug\net6.0\matice2.AssemblyInfoInputs.cache
+C:\Users\klark\Documents\programování\PRG\homework\matice - kopie\matice2\obj\Debug\net6.0\matice2.AssemblyInfo.cs
+C:\Users\klark\Documents\programování\PRG\homework\matice - kopie\matice2\obj\Debug\net6.0\matice2.csproj.CoreCompileInputs.cache
+C:\Users\klark\Documents\programování\PRG\homework\matice - kopie\matice2\obj\Debug\net6.0\matice2.dll
+C:\Users\klark\Documents\programování\PRG\homework\matice - kopie\matice2\obj\Debug\net6.0\refint\matice2.dll
+C:\Users\klark\Documents\programování\PRG\homework\matice - kopie\matice2\obj\Debug\net6.0\matice2.pdb
+C:\Users\klark\Documents\programování\PRG\homework\matice - kopie\matice2\obj\Debug\net6.0\matice2.genruntimeconfig.cache
+C:\Users\klark\Documents\programování\PRG\homework\matice - kopie\matice2\obj\Debug\net6.0\ref\matice2.dll

@@ -15,15 +15,16 @@
         /*10*/ "Otoč pořadí prvků na hlavní diagonále",
         /*11*/ "Sečti matice",
         /*12*/ "Odečti matice",
-        /*13*/ "vynásob matice",
+        /*13*/ "Vynásob matice",
+        /*14*/ "Vyznač barevně čísla",
                 //pole a*a
-        /*14*/ "Vypiš prvky na vedlejší diagonále",
-        /*15*/ "Otoč pořadí prvků na vedlejší diagonále"
+        /*15*/ "Vypiš prvky na vedlejší diagonále",
+        /*16*/ "Otoč pořadí prvků na vedlejší diagonále"
     };
 
     private static void Main(string[] args)
     {
-        DucksAnimation();
+        //DucksAnimation();
         FillMatrix();
         WriteMatrix();
 
@@ -45,16 +46,53 @@
                 case 11: addTwoMAtrix(); break;
                 case 12: substractTwoMAtrix(); break;
                 case 13: multiplyTwoMAtrix(); break;
+                case 14: hilightNumber(); break;
                 // pole a*a
-                case 14: writeSecondaryDiagonal(); break;
-                case 15: reverseSecondaryDiagonal(); break;
+                case 15: writeSecondaryDiagonal(); break;
+                case 16: reverseSecondaryDiagonal(); break;
             }
         } while (askIfAgain()); //dokud chce uživatel pokračovat v počítání
     }
 
-    /// <summary>Zobrazí na konzoli animaci kachen</summary>
+    private static void hilightNumber()
+    {
+        Dictionary<int, int> quantity = new Dictionary<int, int>();
+
+        //největší četnost
+        Console.Write("Číslo s nejvyšší četností ");
+
+        //int max = matrix.Cast<int>().Max();
+        //int min = matrix.Cast<int>().Min();
+
+        //int[] sum = new int[max - min + 1];
+
+        for (int r = 0; r < matrix.GetLength(0); r++)
+        {
+            for (int c = 0; c < matrix.GetLength(1); c++)
+            {
+                int key = matrix[r, c];
+                if (quantity.ContainsKey(key))
+                    quantity[key] += 1;
+                else
+                    quantity.Add(key, 1);
+
+                //int index = key - min;
+                //sum[index] += 1;
+            }
+        }
+        var pairs = quantity.OrderByDescending(pair => pair.Value).ToArray();
+
+        //Console.WriteLine(Array.IndexOf(sum, sum.Max()) + min);
+
+        Console.Write("Číslo: ");
+        int number = NumberCheck();
+
+        WriteMatrix(number);
+    }
+
     private static void DucksAnimation()
     {
+
         Console.CursorVisible = false;
         string[] ducks = {
                "      _          _          _          _          _          ",
@@ -64,11 +102,13 @@
                "~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~"};
         for (int i = 0; i < ducks[4].Length; i++)
         {
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             for (int j = 0; j < 4; j++)
             {
                 Console.WriteLine(ducks[j]);
                 ducks[j] = ducks[j].Remove(0, 1);
             }
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.CursorTop = Console.CursorTop - 1;
             for (int j = 1; j < ducks[4].Length - i; j++)
             {
@@ -78,24 +118,16 @@
             Thread.Sleep(100);
             Console.SetCursorPosition(0, 0);
         }
+        Console.ForegroundColor = ConsoleColor.White;
         Console.Clear();
         Console.CursorVisible = true;
     }
 
-    private static void multiplyTwoMAtrix()
-    {
-        twoMatrixOperations(2);
-    }
+    private static void multiplyTwoMAtrix() => twoMatrixOperations(2);
+    
+    private static void substractTwoMAtrix() => twoMatrixOperations(1);
 
-    private static void substractTwoMAtrix()
-    {
-        twoMatrixOperations(1);
-    }
-
-    private static void addTwoMAtrix()
-    {
-        twoMatrixOperations(0);
-    }
+    private static void addTwoMAtrix() => twoMatrixOperations(0);
 
     /// <summary>Provádí operace s dvěmi maticemi 0 - přičítá matici, 1 - odečítá matici, 2 - násobí maticí</summary>
     /// <returns>
@@ -141,13 +173,16 @@
         }
 
         // odčítání nebo sčítání matic
+
         else 
         {
+            int multiplier = (operation == 0) ? +1 : -1;
+
             for (int r = 0; r < matrix.GetLength(0); r++)
             {
                 for (int c = 0; c < matrix.GetLength(1); c++)
                 {
-                    matrix[r, c] = (operation == 0) ? (matrix[r, c] + matrix2[r, c]) : (matrix[r, c] - matrix2[r, c]);
+                    matrix[r, c] += multiplier * matrix2[r, c];
                 }
             }
         }
@@ -182,19 +217,31 @@
     /// </returns>
     private static int[,] GenerateValues(bool random, int rowsNumber, int columnsNumber)
     {
-        int max = 2000;
+        int max = 200;
         int[,] matrix = new int[rowsNumber, columnsNumber];
-        int number = 1;
-        Random rnd = new Random();
+        
+        Func<int> returnNumber = random? GetRandomFn(max): GetSequenceFn();
+
         for (int r = 0; r < rowsNumber; r++)
         {
             for (int c = 0; c < columnsNumber; c++)
             {
-                matrix[r, c] = random ? rnd.Next(0, max) : number;
-                number++;
+                matrix[r, c] = returnNumber();
             }
         }
         return matrix;
+    }
+
+    private static Func<int> GetRandomFn(int max)
+    {
+        Random rnd = new Random();
+        return () => rnd.Next(0, max);
+    }
+
+    private static Func<int> GetSequenceFn()
+    {
+        int number = 1;
+        return () => number++;
     }
 
     /// <summary>Ptá se, zda chce užitvatel pokračovat v počítání</summary>
@@ -494,11 +541,21 @@
 
     /// <summary>Vypíše naši hlavní matici do konzole</summary>
     private static void WriteMatrix() {
-        WriteMatrix(matrix); 
+        WriteMatrix(matrix, 0, false); 
+    }
+
+    private static void WriteMatrix(int[,] matrix)
+    {
+        WriteMatrix(matrix, 0, false);
+    }
+
+    private static void WriteMatrix(int hNumber)
+    { 
+        WriteMatrix(matrix, hNumber, true);
     }
 
     /// <summary>Vypíše zadanou matici do konzole</summary>
-    private static void WriteMatrix(int[,] matrix)
+    private static void WriteMatrix(int[,] matrix, int hNumber, bool hilight)
     {
         int digitsMax = 0; //maximální počet cifer
 
@@ -524,7 +581,9 @@
                     left = 0;
                     Console.WriteLine();
                 }
+                if (hilight && matrix[r, c] == hNumber) Console.ForegroundColor = ConsoleColor.Magenta;
                 Console.Write(matrix[r, c]);
+                Console.ForegroundColor = ConsoleColor.White;
             }
             Console.WriteLine();
         }
