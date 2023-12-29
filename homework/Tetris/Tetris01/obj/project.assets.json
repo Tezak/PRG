@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\klark\\OneDrive\\Documents\\programování\\PRG\\homework\\Tetris02\\Tetris01\\Tetris01.csproj",
+      "projectUniqueName": "C:\\Users\\klark\\OneDrive\\Documents\\programování\\PRG\\homework\\Tetris\\Tetris01\\Tetris01.csproj",
       "projectName": "Tetris01",
-      "projectPath": "C:\\Users\\klark\\OneDrive\\Documents\\programování\\PRG\\homework\\Tetris02\\Tetris01\\Tetris01.csproj",
+      "projectPath": "C:\\Users\\klark\\OneDrive\\Documents\\programování\\PRG\\homework\\Tetris\\Tetris01\\Tetris01.csproj",
       "packagesPath": "C:\\Users\\klark\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\klark\\OneDrive\\Documents\\programování\\PRG\\homework\\Tetris02\\Tetris01\\obj\\",
+      "outputPath": "C:\\Users\\klark\\OneDrive\\Documents\\programování\\PRG\\homework\\Tetris\\Tetris01\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\klark\\AppData\\Roaming\\NuGet\\NuGet.Config",
