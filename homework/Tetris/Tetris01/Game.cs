@@ -6,24 +6,31 @@ using System.Threading.Tasks;
 
 namespace Tetris01
 {
+    /// <summary>Zde se odehrává veškerá herní logika</summary>
     internal class Game
     {
-        public bool gameOver = false;
-        // list of tetraminos and their rotations
+        internal bool GameOver;
+
         List<Tetromino> tetrominos = TetrominoSet.tetrominos;
         static bool[,] playField = createPlayField();
         Draw draw = new Draw(playField.GetLength(1), playField.GetLength(0));
-        int currentTetromino = getRandomTetromino();
-        int nextTetromino = getRandomTetromino();
-        int x = 4;
-        int y = 0;
-        int rotation = 0;
+        int currentTetromino;
+        int nextTetromino;
+        int x, y, rotation;
+        
         DateTime startTime = DateTime.Now;
+        int level = 1;
 
-        public void drawGame()
+        /// <summary>Nastaví vše na začátku hry</summary>
+        internal void StartGame()
         {
-            Console.CursorVisible = false;
-            draw.All(playField);
+            playField = createPlayField();
+            currentTetromino = getRandomTetromino();
+            nextTetromino = getRandomTetromino();
+            x = 4;
+            y = 0;
+            rotation = 0;
+            draw.StartOfGame(playField, tetrominos[nextTetromino]);
         }
 
         private void updateTetrominoFall()
@@ -31,7 +38,7 @@ namespace Tetris01
             draw.Tetromino(x, y, tetrominos[currentTetromino].shapeRotation[rotation]);
         }
 
-        public void update()
+        internal void Update()
         {
             updateTetrominoFall();
             while (time() < 1000)
@@ -83,7 +90,7 @@ namespace Tetris01
             if (colisionCheck())
             {
                 AddTetromino();
-                if (!gameOver)
+                if (!GameOver)
                 {
                     currentTetromino = nextTetromino;
                     nextTetromino = getRandomTetromino();
@@ -91,7 +98,7 @@ namespace Tetris01
                     x = 4;
                     y = 0;
                     rotation = 0;
-                    draw.Score(10);
+                    draw.Score(10, level);
                     draw.Field(playField);
                 }
             }
@@ -118,7 +125,7 @@ namespace Tetris01
             }
             if (y < 2)
             {
-                gameOver = true;
+                GameOver = true;
                 draw.GameOver();
             }
             lookForWholeRow();
@@ -126,13 +133,15 @@ namespace Tetris01
 
         private void lookForWholeRow()
         {
+            int lineCount = 0;
+            int perfectClear = 1;
             for (int i = playField.GetLength(0) - 4; i >=0 ; i--)
             {
                 for (int j = 3; j < playField.GetLength(1) - 3; j++)
                 {
                     if (playField[i, j] && j == playField.GetLength(1) - 4)
                     {
-                        draw.Score(100);
+                        lineCount++;
                         draw.Line(i);
                         for (int k = i; k > 0; k--)
                         {
@@ -147,6 +156,20 @@ namespace Tetris01
                     if (!playField[i, j]) break;
                 }
             }
+
+            if (lineCount == 0) return;
+
+            int ii = playField.GetLength(0) - 4;
+            for (int j = 3; j < playField.GetLength(1) - 3; j++)
+            {
+                if (!playField[ii, j] && j == playField.GetLength(1) - 4) perfectClear = 10;
+                if (playField[ii, j]) break;
+            }
+
+            draw.Score((lineCount == 0 ? 0: 
+                lineCount == 1 ? 100 :
+                lineCount == 2 ? 400 :
+                lineCount == 3 ? 900 : 2000) * perfectClear, level);
         }
 
         private bool colisionCheck()
@@ -164,6 +187,7 @@ namespace Tetris01
         private static bool[,] createPlayField()
         {
             bool[,] playField = new bool[24, 16];
+
             for (int i = 2; i < playField.GetLength(0) - 2; i++)
             {
                 playField[i, 2] = true;

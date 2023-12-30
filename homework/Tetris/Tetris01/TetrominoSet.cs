@@ -6,14 +6,18 @@ using System.Threading.Tasks;
 
 namespace Tetris01
 {
+    /// <summary>Obsahuje jednotlivá tetramina</summary>
     internal class TetrominoSet
     {
         const bool o = true;
         const bool x = false;
-        public static List<Tetromino> tetrominos = createTetraminos();
+        internal static List<Tetromino> tetrominos = createTetraminos();
+
+        /// <summary>Vytváří jednotlivá tetramina</summary>
         private static List<Tetromino> createTetraminos()
         {
             List<Tetromino> tetraminos = new List<Tetromino>();
+
             Tetromino I = new Tetromino();
             tetraminos.Add(I);
             I.shapeRotation.Add(new bool[,]{
@@ -28,6 +32,7 @@ namespace Tetris01
                 { x,o,x,x },
                 { x,o,x,x }
             });
+
             Tetromino T = new Tetromino();
             tetraminos.Add(T);
             T.shapeRotation.Add(new bool[,]{
@@ -54,6 +59,7 @@ namespace Tetris01
                 { x,o,x,x },
                 { x,x,x,x }
             });
+
             Tetromino Z = new Tetromino();
             tetraminos.Add(Z);
             Z.shapeRotation.Add(new bool[,]{
@@ -68,6 +74,7 @@ namespace Tetris01
                 { o,x,x,x },
                 { x,x,x,x }
             });
+
             Tetromino ZR = new Tetromino();
             tetraminos.Add(ZR);
             ZR.shapeRotation.Add(new bool[,]{
@@ -82,6 +89,7 @@ namespace Tetris01
                 { x,x,o,x },
                 { x,x,x,x }
             });
+
             Tetromino L = new Tetromino();
             tetraminos.Add(L);
             L.shapeRotation.Add(new bool[,]{
@@ -108,6 +116,7 @@ namespace Tetris01
                 { x,x,o,x },
                 { x,x,x,x }
             });
+
             Tetromino LR = new Tetromino();
             tetraminos.Add(LR);
             LR.shapeRotation.Add(new bool[,]{
@@ -134,6 +143,7 @@ namespace Tetris01
                 { o,x,x,x },
                 { x,x,x,x }
             });
+
             Tetromino O = new Tetromino();
             tetraminos.Add(O);
             O.shapeRotation.Add(new bool[,]{

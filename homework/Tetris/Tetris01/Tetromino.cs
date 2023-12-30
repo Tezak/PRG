@@ -1,7 +1,8 @@
 ﻿namespace Tetris01
 {
+    /// <summary>Tetramino je list rotací tetramina uložených prostřednictvím polí</summary>
     internal class Tetromino
     {
-        public List<bool[,]> shapeRotation = new List<bool[,]>();
+        internal List<bool[,]> shapeRotation = new List<bool[,]>();
     }
 }
