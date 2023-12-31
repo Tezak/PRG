@@ -62,12 +62,13 @@ namespace Tetris01
         /// <summary>Vykreslí hru</summary>
         public void StartOfGame(bool[,] playField, Tetromino tetromino)
         {
+            Console.ForegroundColor = ConsoleColor.White;
             score = 0;
             Console.Clear();
             Headings();
             Score(0, 1);
-            hiScore = getHiScore();
             HiScore();
+            Level(1);
             Next(tetromino);
             FieldBig(playField);
         }
@@ -92,7 +93,7 @@ namespace Tetris01
         {
             rewriteHiScore();
             cursorPosition(playFieldLeft + playFieldWidth / 2 - 4, playFieldTop + 10);
-            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.Write("GAMEOVER");
             Console.ForegroundColor = ConsoleColor.White;
         }
@@ -106,14 +107,44 @@ namespace Tetris01
         /// <summary>Animace při mizení řádku</summary>
         public void Line(int line)
         {
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            cursorPosition(playFieldLeft + 3, playFieldTop + line);
+            Console.ForegroundColor = ConsoleColor.Yellow;
             for(int i = 0; i < 10; i++)
             {
+                DucksAnimation(i / 4);
+                cursorPosition(playFieldLeft + 3 + i, playFieldTop + line);
                 Console.Write("█");
-                Thread.Sleep(30);
+                Thread.Sleep(50);
             }
             Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        internal void DucksAnimation(int i)
+        {
+            Console.CursorVisible = false;
+            List<string[]> frames = new List<string[]>();
+            frames.Add(new string[] {
+               "   -      ",
+               " >(')     ",
+               "   ( --,  ",
+               "   \\ =~/  ",
+               "    `-'   "});
+            frames.Add(new string[] {
+               "      -   ",
+               "     (')< ",
+               "  ,-- )   ",
+               "  \\~= /   ",
+               "   `-'    "});
+            frames.Add(new string[] {
+               "          ",
+               "          ",
+               "          ",
+               "          ",
+               "          "});
+            for (int j = 0; j < 5; j++)
+            {
+                cursorPosition(textLeft, textTop + 13 + j);
+                Console.WriteLine(frames[i][j]);
+            }
         }
 
         /// <summary>Vykreslí nadpisy</summary>
@@ -127,6 +158,14 @@ namespace Tetris01
             Console.Write("SCORE: ");
             cursorPosition(textLeft, textTop + 5);
             Console.Write("NEXT");
+            cursorPosition(textLeft, textTop + 11);
+            Console.Write("LEVEL: ");
+        }
+
+        public void Level(int level)
+        {
+            cursorPosition(textLeft + 7, textTop + 11);
+            Console.Write(level);
         }
 
         /// <summary>Vypisuje skóre a updatuje ho</summary>
@@ -141,8 +180,9 @@ namespace Tetris01
             Console.Write(score);
         }
         /// <summary>vypisuje nejvyšší skóre</summary>
-        public void HiScore()
+        internal void HiScore()
         {
+            hiScore = getHiScore();
             cursorPosition(textLeft + 10, textTop);
             Console.Write(hiScore);
         }
@@ -157,7 +197,7 @@ namespace Tetris01
                 {
                     if (playField[i, j])
                     {
-                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
                         Console.Write("█");
                         Console.ForegroundColor = ConsoleColor.White;
                     }
@@ -196,6 +236,7 @@ namespace Tetris01
 
         private void tetrominoDraw(int x, int y, bool[,] tetromino, char ch)
         {
+            Console.CursorVisible = false;
             for (int i = 0; i < 4; i++)
             {
                 for (int j = 0; j < 4; j++)

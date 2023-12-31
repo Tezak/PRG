@@ -16,10 +16,9 @@ namespace Tetris01
         Draw draw = new Draw(playField.GetLength(1), playField.GetLength(0));
         int currentTetromino;
         int nextTetromino;
-        int x, y, rotation;
+        int x, y, rotation, lineCount, level;
         
         DateTime startTime = DateTime.Now;
-        int level = 1;
 
         /// <summary>Nastaví vše na začátku hry</summary>
         internal void StartGame()
@@ -30,35 +29,46 @@ namespace Tetris01
             x = 4;
             y = 0;
             rotation = 0;
+            level = 1;
+            lineCount = 0;
             draw.StartOfGame(playField, tetrominos[nextTetromino]);
         }
 
+        /// <summary>Updatuje pád tetramina</summary>
         private void updateTetrominoFall()
         {
             draw.Tetromino(x, y, tetrominos[currentTetromino].shapeRotation[rotation]);
         }
 
+        /// <summary>Hlavní herní smyčka</summary>
         internal void Update()
         {
-            updateTetrominoFall();
-            while (time() < 1000)
+            int timeLimit;
+            while (!GameOver)
             {
-                //check if key is pressed
-                if (Console.KeyAvailable)
+                updateTetrominoFall();
+                int[] limits = {800, 716, 633, 550, 466, 383, 300, 216, 133, 100};
+                timeLimit = level < 11 ? limits[level - 1]: 100;
+                while (time() < timeLimit)
                 {
-                    ConsoleKeyInfo keyInfo = Console.ReadKey(true);
-                    if (keyInfo.Key == ConsoleKey.DownArrow) 
-                        break;
-                    if (keyInfo.Key == ConsoleKey.UpArrow) 
-                        tryToRotate();
-                    if (keyInfo.Key == ConsoleKey.LeftArrow || keyInfo.Key == ConsoleKey.RightArrow) 
-                        tryToMoveX(keyInfo);
+                    //zkontroluje zda je klávesa stisknutá
+                    if (Console.KeyAvailable)
+                    {
+                        ConsoleKeyInfo keyInfo = Console.ReadKey(true);
+                        if (keyInfo.Key == ConsoleKey.DownArrow)
+                            if(timeLimit != 50) timeLimit = 50;
+                        if (keyInfo.Key == ConsoleKey.UpArrow)
+                            tryToRotate();
+                        if (keyInfo.Key == ConsoleKey.LeftArrow || keyInfo.Key == ConsoleKey.RightArrow)
+                            tryToMoveX(keyInfo);
+                    }
+                    Thread.Sleep(10);
                 }
-                Thread.Sleep(10);
+                startTime = DateTime.Now;
+                tryToMoveY();
             }
-            startTime = DateTime.Now;
-            tryToMoveY();
         }
+
 
         private void tryToRotate()
         {
@@ -135,6 +145,7 @@ namespace Tetris01
         {
             int lineCount = 0;
             int perfectClear = 1;
+
             for (int i = playField.GetLength(0) - 4; i >=0 ; i--)
             {
                 for (int j = 3; j < playField.GetLength(1) - 3; j++)
@@ -170,6 +181,13 @@ namespace Tetris01
                 lineCount == 1 ? 100 :
                 lineCount == 2 ? 400 :
                 lineCount == 3 ? 900 : 2000) * perfectClear, level);
+            this.lineCount += lineCount;
+            if (this.lineCount >= 10) 
+            { 
+                this.lineCount -= 10;
+                level++;
+                draw.Level(level);
+            }
         }
 
         private bool colisionCheck()

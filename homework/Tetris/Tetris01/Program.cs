@@ -22,10 +22,8 @@ internal class Program
             //vykreslí se hera
             game.StartGame();
 
-            //dokud není game over updatuje se stav hry
-            while (!game.GameOver) game.Update();
-
-            //nechá u
+            game.Update();
+            //nechá uživatele si vybrat zda chce hrát znovu nebo ne
             option = menu.Choose(options, Draw.playFieldTop + 26);
         } 
         Console.ReadKey();

@@ -99,9 +99,9 @@ namespace Tetris01
                 { x,x,x,x }
             });
             L.shapeRotation.Add(new bool[,]{
-                { x,o,x,x },
-                { x,o,x,x },
-                { x,o,o,x },
+                { o,x,x,x },
+                { o,x,x,x },
+                { o,o,x,x },
                 { x,x,x,x }
             });
             L.shapeRotation.Add(new bool[,]{
@@ -111,9 +111,9 @@ namespace Tetris01
                 { x,x,x,x }
             });
             L.shapeRotation.Add(new bool[,]{
-                { x,o,o,x },
-                { x,x,o,x },
-                { x,x,o,x },
+                { o,o,x,x },
+                { x,o,x,x },
+                { x,o,x,x },
                 { x,x,x,x }
             });
 
@@ -126,9 +126,9 @@ namespace Tetris01
                 { x,x,x,x }
             });
             LR.shapeRotation.Add(new bool[,]{
-                { x,o,x,x },
-                { x,o,x,x },
                 { o,o,x,x },
+                { o,x,x,x },
+                { o,x,x,x },
                 { x,x,x,x }
             });
             LR.shapeRotation.Add(new bool[,]{
@@ -138,9 +138,9 @@ namespace Tetris01
                 { x,x,x,x }
             });
             LR.shapeRotation.Add(new bool[,]{
+                { x,o,x,x },
+                { x,o,x,x },
                 { o,o,x,x },
-                { o,x,x,x },
-                { o,x,x,x },
                 { x,x,x,x }
             });
 
